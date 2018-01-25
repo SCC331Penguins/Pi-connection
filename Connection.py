@@ -98,12 +98,35 @@ def Connect(ssid, password=None):
 
     return False
 
+
+def Add(cell, password=None):
+    if not cell:
+        return False
+
+    scheme = wifi.Scheme.for_cell('wlan0', cell.ssid, cell, password)
+    scheme.save()
+    return scheme
+
+
+def Delete(ssid):
+    if not ssid:
+        return False
+
+    cell = FindFromSavedList(ssid)
+
+    if cell:
+        cell.delete()
+        return True
+
+    return False
+
+
 if __name__ == '__main__':
     # Search WiFi and return WiFi list
     print(Search())
 
     # Connect WiFi with password & without password
-    print(Connect('ClosedWiFi', 'password'))
+    print(Connect('!studio?x57', 'SCC3_X2'))
 
     # Delete WiFi from auto connect list
     print(Delete('DeleteWiFi'))
