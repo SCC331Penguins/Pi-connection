@@ -127,7 +127,8 @@ if __name__ == '__main__':
     cells = Search()
     print(cells)
     for cell in cells:
-        if cell.ssid.startsWith("PHOTON-"):
+        y = cell.ssid.decode('utf-8')
+        if y.startsWith("PHOTON-"):
             Connect(cell)
             send_post()
 
