@@ -5,12 +5,13 @@ import wifi
 # connect to router
 # connect to PHOTON-
 
+url = 'http://192.168.0.1/wifi'  # Set destination URL here
+ssid = "!studio?x57"
+password = "SCC33X_2"
+ip = "0.0.0.0"
+
 
 def send_post():
-    url = 'http://192.168.0.1/wifi'  # Set destination URL here
-    ssid = "pi"
-    password = "pass"
-    ip = "0.0.0.0"
     post_fields = ssid + "\t" + password + "\t" + ip  # Set POST fields here
     try:
         r = requests.post(url, post_fields)
@@ -123,10 +124,15 @@ def Delete(ssid):
 
 if __name__ == '__main__':
     # Search WiFi and return WiFi list
-    print(Search())
+    cells = Search()
+    print(cells)
+    for cell in cells:
+        if cell.startsWith("PHOTON-"):
+            Connect(cell)
+            send_post()
 
     # Connect WiFi with password & without password
-    print(Connect('!studio?x57', 'SCC3_X2'))
+    print(Connect(ssid, password))
 
     # Delete WiFi from auto connect list
-    print(Delete('DeleteWiFi'))
+    #print(Delete('DeleteWiFi'))
