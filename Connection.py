@@ -127,8 +127,3 @@ if __name__ == '__main__':
                 send_post(y)
                 Connect(ssidRouter, passwordRouter)
         time.sleep(30)
-            # TODO: Save photon 
-   # print(Connect(ssid, password))
-
-    # Delete WiFi from auto connect list
-    #print(Delete('DeleteWiFi'))
