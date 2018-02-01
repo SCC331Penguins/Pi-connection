@@ -125,5 +125,4 @@ if __name__ == '__main__':
             if y.startswith("Photon-" ) and not y in foreignPhotons:
                 print(Connect(y))
                 send_post(y)
-                Connect(ssidRouter, passwordRouter)
         time.sleep(30)
